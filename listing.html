@@ -1,547 +1,679 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Restaurants - FoodPoint</title>
+    <link rel="shortcut icon" href="images/favicon.png" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="css/style.css" rel="stylesheet" />
+    <style>
+      @keyframes up {
+        from {
+          opacity: 0;
+          transform: translateY(28px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .item,
+      .fade-up {
+        animation: up 0.6s ease both;
+      }
+      .item:nth-child(4n + 2) {
+        animation-delay: 0.08s;
+      }
+      .item:nth-child(4n + 3) {
+        animation-delay: 0.16s;
+      }
+      .item:nth-child(4n) {
+        animation-delay: 0.24s;
+      }
+      .card-x {
+        transition:
+          transform 0.3s,
+          border-color 0.3s,
+          box-shadow 0.3s;
+      }
+      .card-x:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
+      }
+      .page-head {
+        background:
+          linear-gradient(90deg, #111317 40%, rgba(17, 19, 23, 0.7)),
+          url(images/hero-bg.jpg) center/cover;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .item,
+        .fade-up,
+        .card-x {
+          animation: none;
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="nav"></div>
+    <main id="main">
+      <section class="page-head py-5 border-bottom border-secondary-subtle">
+        <div class="container py-5 fade-up">
+          
+          <h1 class="fw-bold display-5 mb-2 py-3">
+            Find your next favourite restaurant
+          </h1>
+          <p class="text-secondary mb-4 py-3" style="max-width: 600px">
+            Explore verified restaurants near you. Check ratings, delivery time
+            and minimum order before you choose, then order in a few clicks.
+          </p>
+          <div class="d-flex flex-wrap gap-4 small">
+            <span
+              ><i class="fa fa-circle-check text-warning me-2"></i>Verified
+              restaurants</span
+            ><span
+              ><i class="fa fa-motorcycle text-warning me-2"></i>Free delivery
+              on selected places</span
+            ><span
+              ><i class="fa fa-star text-warning me-2"></i>Real customer
+              ratings</span
+            >
+          </div>
+        </div>
+      </section>
 
-<head>
-  <!-- Basic -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- Mobile Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <!-- Site Metas -->
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-  <link rel="shortcut icon" href="images/favicon.png" type="">
-
-  <title>Listing - FoodPoint</title>
-
-
-  <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-
-  <!--owl slider stylesheet -->
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-  <!-- nice select  -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
-  <!-- font awesome style -->
-  <link href="css/font-awesome.min.css" rel="stylesheet" />
-
-  <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet" />
-  <!-- responsive style -->
-  <link href="css/responsive.css" rel="stylesheet" />
-
-</head>
-
-<body class="sub_page">
-
-  <div class="hero_area">
-    <!-- header section starts -->
-    <header class="header_section">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.html">
-            <span class="logo">
-              Food Point
-            </span>
-          </a>
-
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class=""> </span>
-          </button>
-
-          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-            <ul class="navbar-nav">
-              <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="listing.html">Restaurant List</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="detail.html">Restaurant Details</a>
-              </li>
-              <li>
-                    <a id="shopping-cart" class="shopping-cart">
-                        <i class="fa fa-cart-arrow-down text-white"></i>
-                        <span class="badge">4</span>
-                    </a>
-                    <div id="cart-content" class="cart-content">
-                        <h3 class="text-center">Shopping Cart</h3>
-                        <table class="cart-table table table-dark" border="0">
-                            <tr>
-                                <th>Food</th>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Qty</th>
-                                <th>Total</th>
-                                <th>Action</th>
-                            </tr>
-                            <tr>
-                                <td><img src="images/f1.png" alt="Food"></td>
-                                <td>Pizza</td>
-                                <td>$ 8.00</td>
-                                <td>1</td>
-                                <td>$ 8.00</td>
-                                <td><a href="#" class="btn-delete">&times;</a></td>
-                            </tr>
-                            <tr>
-                                <td><img src="images/f2.png" alt="Food"></td>
-                                <td>Sandwich</td>
-                                <td>$ 8.00</td>
-                                <td>1</td>
-                                <td>$ 8.00</td>
-                                <td><a href="#" class="btn-delete">&times;</a></td>
-                            </tr>
-                            <tr>
-                                <td><img src="images/f3.png" alt="Food"></td>
-                                <td>Burger</td>
-                                <td>$ 8.00</td>
-                                <td>1</td>
-                                <td>$ 8.00</td>
-                                <td><a href="#" class="btn-delete">&times;</a></td>
-                            </tr>
-                            <tr>
-                                <th colspan="4">Total</th>
-                                <th>$24.00$</th>
-                                <th></th>
-                            </tr>
-                        </table>
-                        <div class="text-center">
-                        <a href="order.html" class="btn btn-primary" type="submit">Confirm Order</a>
-                      </div>
+      <section class="py-5">
+        <div class="container">
+          <div class="row g-3 align-items-center mb-3">
+            <div class="col-md-5">
+              <div class="input-group">
+                <span
+                  class="input-group-text bg-transparent border-secondary-subtle text-secondary"
+                  ><i class="fa fa-magnifying-glass"></i></span
+                ><input
+                  id="q"
+                  class="form-control"
+                  placeholder="Search by restaurant name..."
+                />
+              </div>
+            </div>
+            <div class="col-md-4 ms-md-auto">
+              <select id="sort" class="form-select form-control">
+                <option value="rating">Sort by: Top rated</option>
+                <option value="time">Sort by: Fastest delivery</option>
+                <option value="price">Sort by: Lowest minimum order</option>
+                <option value="name">Sort by: Name (A–Z)</option>
+              </select>
+            </div>
+          </div>
+          <div
+            class="d-flex flex-wrap justify-content-between align-items-center mb-4"
+          >
+            <div class="mb-2">
+              <button class="chip on" data-f="all">All</button
+              ><button class="chip" data-f="italian">Italian</button
+              ><button class="chip" data-f="chinese">Chinese</button
+              ><button class="chip" data-f="indian">Indian</button
+              ><button class="chip" data-f="pakistani">Pakistani</button>
+            </div>
+            <small class="text-secondary mb-2" id="count"></small>
+          </div>
+          <div class="row g-4" id="grid">
+            <div
+              class="col-sm-6 col-lg-3 item"
+              data-c="chinese"
+              data-n="dragon wok"
+              data-r="4.5"
+              data-t="25"
+              data-p="10"
+            >
+              <div class="card-x d-flex flex-column h-100">
+                <div class="position-relative">
+                  <img src="images/Chinese-2.jpg" alt="Dragon Wok" />
+                  <span
+                    class="badge text-bg-success position-absolute top-0 start-0 m-2"
+                    >Open now</span
+                  ><span
+                    class="badge text-bg-warning position-absolute top-0 end-0 m-2"
+                    ><i class="fa fa-star"></i> 4.5</span
+                  >
+                </div>
+                <div class="b d-flex flex-column flex-grow-1">
+                  <div class="d-flex justify-content-between align-items-start">
+                    <h5>Dragon Wok</h5>
+                    <small class="text-capitalize">chinese</small>
+                  </div>
+                  <small>320 reviews</small>
+                  <p class="mb-2">
+                    Hand-pulled noodles, dumplings and wok-fried classics cooked
+                    fresh over high flame.
+                  </p>
+                  <div class="mb-3">
+                    <span
+                      class="badge rounded-pill text-bg-dark border border-secondary fw-normal me-1"
+                      >Noodles</span
+                    ><span
+                      class="badge rounded-pill text-bg-dark border border-secondary fw-normal me-1"
+                      >Dumplings</span
+                    >
+                  </div>
+                  <div
+                    class="row g-0 text-center small border-top border-secondary-subtle pt-2 mb-3"
+                  >
+                    <div class="col-4">
+                      <i class="fa fa-clock text-warning"></i><br />25–35 min
                     </div>
-                </li>
-                
-                    <div class="action">
-                          <div class="profile" onclick="menuToggle();">
-                            <img src="images/client1.jpg" class="" alt="">
-                          </div>
-    
-                          <div class="menu">
-                            <h3>
-                               Harsh Patel
-                              <br />
-                              <span>Admin</span>
-                            </h3>
-                            <ul class="p-0">
-                              <li class="khan">
-                                <i class="fa-solid fa-user p-1"></i>
-                                <a href="profile.html">My Profile</a>
-                              </li>
-                            
-                              <li>
-                                <i class="fa-solid fa-cart-shopping p-1"></i>
-                                <a href="order.html">My Order</a>
-                              </li>
-                              <li>
-                                <i class="fa-solid fa-arrow-right-to-bracket p-1"></i>
-                                <a href="login.html">Log In</a>
-                              </li>
-                              <li>
-                                <i class="fa-solid fa-arrow-right-from-bracket p-1"></i>
-                                <a href="#">Logout</a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-              </ul>
-           
-          </div>
-        </nav>
-      </div>
-    </header>
-    <!-- end header section -->
-  </div>
-
-  <!-- Listing section -->
-
-  <section class="food_section layout_padding">
-    <div class="container">
-      <div class="heading_container heading_center">
-        <h2>
-          Our Restaurant Listing
-        </h2>
-      </div>
-
-      <ul class="filters_menu">
-        <li class="active" data-filter="*">All</li>
-        <li data-filter=".italian">Italian</li>
-        <li data-filter=".chinese">Chinese</li>
-        <li data-filter=".indian">Indian</li>
-        <li data-filter=".pakistani">Pakistani</li>
-      </ul>
-
-      <div class="filters-content">
-        <div class="row grid">
-          <div class="col-sm-6 col-lg-4 all chinese">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="images/Chinese-2.jpg" alt="">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Chinese Restaurant
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
-                  <div class="options">
-                     <span>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star-half-stroke"></i>
-                      <i class="fa-regular fa-star"></i>
-                     </span>
-                    <h6>
-                      $20
-                    </h6>
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 all italian">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="images/Italian.jpg" alt="">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Italian Restaurant
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
-                  <div class="options">
-                    <span>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star-half-stroke"></i>
-                      <i class="fa-regular fa-star"></i>
-                     </span>
-                    <h6>
-                      $15
-                    </h6>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 all indian">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="images/Indian-1.jpg" alt="">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Indian Restaurant
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
-                  <div class="options">
-                    <span>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star-half-stroke"></i>
-                      <i class="fa-regular fa-star"></i>
-                     </span>
-                    <h6>
-                      $17
-                    </h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 all chinese">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="images/Chinese-2.jpg" alt="">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Chinese Restaurant
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
-                  <div class="options">
-                    <span>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star-half-stroke"></i>
-                      <i class="fa-regular fa-star"></i>
-                     </span>
-                    <h6>
-                      $18
-                    </h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 all italian">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="images/Italian-3.jpg" alt="">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Italian Restaurant
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
-                  <div class="options">
-                    <span>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star-half-stroke"></i>
-                      <i class="fa-regular fa-star"></i>
-                     </span>
-                    <h6>
+                    <div class="col-4">
+                      <i class="fa fa-bag-shopping text-warning"></i><br />Min
                       $10
-                    </h6>
+                    </div>
+                    <div class="col-4">
+                      <i class="fa fa-motorcycle text-warning"></i><br />Free
+                    </div>
                   </div>
+                  <a href="detail.html" class="btn btn-acc w-100 mt-auto"
+                    >View menu</a
+                  >
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 all pakistani">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="images/Indian-2.jpg" alt="">
+            <div
+              class="col-sm-6 col-lg-3 item"
+              data-c="italian"
+              data-n="casa italia"
+              data-r="4.2"
+              data-t="30"
+              data-p="12"
+            >
+              <div class="card-x d-flex flex-column h-100">
+                <div class="position-relative">
+                  <img src="images/Italian.jpg" alt="Casa Italia" />
+                  <span
+                    class="badge text-bg-success position-absolute top-0 start-0 m-2"
+                    >Open now</span
+                  ><span
+                    class="badge text-bg-warning position-absolute top-0 end-0 m-2"
+                    ><i class="fa fa-star"></i> 4.2</span
+                  >
                 </div>
-                <div class="detail-box">
-                  <h5>
-                    Pakistani Restaurant
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
-                  <div class="options">
-                    <span>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star-half-stroke"></i>
-                      <i class="fa-regular fa-star"></i>
-                     </span>
-                    <h6>
-                      $15
-                    </h6>
+                <div class="b d-flex flex-column flex-grow-1">
+                  <div class="d-flex justify-content-between align-items-start">
+                    <h5>Casa Italia</h5>
+                    <small class="text-capitalize">italian</small>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 all pakistani">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="images/Italian-3.jpg" alt="">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    Pakistani Restaurant
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
+                  <small>210 reviews</small>
+                  <p class="mb-2">
+                    Wood-fired pizza with a thin, crisp base, plus fresh pasta
+                    made in-house every morning.
                   </p>
-                  <div class="options">
-                    <span>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star-half-stroke"></i>
-                      <i class="fa-regular fa-star"></i>
-                     </span>
-                    <h6>
+                  <div class="mb-3">
+                    <span
+                      class="badge rounded-pill text-bg-dark border border-secondary fw-normal me-1"
+                      >Pizza</span
+                    ><span
+                      class="badge rounded-pill text-bg-dark border border-secondary fw-normal me-1"
+                      >Pasta</span
+                    >
+                  </div>
+                  <div
+                    class="row g-0 text-center small border-top border-secondary-subtle pt-2 mb-3"
+                  >
+                    <div class="col-4">
+                      <i class="fa fa-clock text-warning"></i><br />30–40 min
+                    </div>
+                    <div class="col-4">
+                      <i class="fa fa-bag-shopping text-warning"></i><br />Min
                       $12
-                    </h6>
+                    </div>
+                    <div class="col-4">
+                      <i class="fa fa-motorcycle text-warning"></i><br />$2
+                    </div>
                   </div>
+                  <a href="detail.html" class="btn btn-acc w-100 mt-auto"
+                    >View menu</a
+                  >
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 all indian">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="images/Indian-1.jpg" alt="">
+            <div
+              class="col-sm-6 col-lg-3 item"
+              data-c="indian"
+              data-n="spice route"
+              data-r="4.6"
+              data-t="35"
+              data-p="15"
+            >
+              <div class="card-x d-flex flex-column h-100">
+                <div class="position-relative">
+                  <img src="images/Indian-1.jpg" alt="Spice Route" />
+                  <span
+                    class="badge text-bg-success position-absolute top-0 start-0 m-2"
+                    >Open now</span
+                  ><span
+                    class="badge text-bg-warning position-absolute top-0 end-0 m-2"
+                    ><i class="fa fa-star"></i> 4.6</span
+                  >
                 </div>
-                <div class="detail-box">
-                  <h5>
-                    Indian Restaurant
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
+                <div class="b d-flex flex-column flex-grow-1">
+                  <div class="d-flex justify-content-between align-items-start">
+                    <h5>Spice Route</h5>
+                    <small class="text-capitalize">indian</small>
+                  </div>
+                  <small>450 reviews</small>
+                  <p class="mb-2">
+                    Slow-cooked curries, butter chicken and soft tandoor naan,
+                    made with whole spices.
                   </p>
-                  <div class="options">
-                    <span>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star-half-stroke"></i>
-                      <i class="fa-regular fa-star"></i>
-                     </span>
-                    <h6>
+                  <div class="mb-3">
+                    <span
+                      class="badge rounded-pill text-bg-dark border border-secondary fw-normal me-1"
+                      >Curry</span
+                    ><span
+                      class="badge rounded-pill text-bg-dark border border-secondary fw-normal me-1"
+                      >Tandoor</span
+                    >
+                  </div>
+                  <div
+                    class="row g-0 text-center small border-top border-secondary-subtle pt-2 mb-3"
+                  >
+                    <div class="col-4">
+                      <i class="fa fa-clock text-warning"></i><br />35–45 min
+                    </div>
+                    <div class="col-4">
+                      <i class="fa fa-bag-shopping text-warning"></i><br />Min
+                      $15
+                    </div>
+                    <div class="col-4">
+                      <i class="fa fa-motorcycle text-warning"></i><br />$2
+                    </div>
+                  </div>
+                  <a href="detail.html" class="btn btn-acc w-100 mt-auto"
+                    >View menu</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              class="col-sm-6 col-lg-3 item"
+              data-c="chinese"
+              data-n="golden bowl"
+              data-r="4.0"
+              data-t="20"
+              data-p="8"
+            >
+              <div class="card-x d-flex flex-column h-100">
+                <div class="position-relative">
+                  <img src="images/Chinese-3.jpg" alt="Golden Bowl" />
+                  <span
+                    class="badge text-bg-success position-absolute top-0 start-0 m-2"
+                    >Open now</span
+                  ><span
+                    class="badge text-bg-warning position-absolute top-0 end-0 m-2"
+                    ><i class="fa fa-star"></i> 4.0</span
+                  >
+                </div>
+                <div class="b d-flex flex-column flex-grow-1">
+                  <div class="d-flex justify-content-between align-items-start">
+                    <h5>Golden Bowl</h5>
+                    <small class="text-capitalize">chinese</small>
+                  </div>
+                  <small>150 reviews</small>
+                  <p class="mb-2">
+                    Quick rice bowls, fried rice and lunch combos that are
+                    filling and easy on the pocket.
+                  </p>
+                  <div class="mb-3">
+                    <span
+                      class="badge rounded-pill text-bg-dark border border-secondary fw-normal me-1"
+                      >Rice bowls</span
+                    ><span
+                      class="badge rounded-pill text-bg-dark border border-secondary fw-normal me-1"
+                      >Combos</span
+                    >
+                  </div>
+                  <div
+                    class="row g-0 text-center small border-top border-secondary-subtle pt-2 mb-3"
+                  >
+                    <div class="col-4">
+                      <i class="fa fa-clock text-warning"></i><br />20–30 min
+                    </div>
+                    <div class="col-4">
+                      <i class="fa fa-bag-shopping text-warning"></i><br />Min
+                      $8
+                    </div>
+                    <div class="col-4">
+                      <i class="fa fa-motorcycle text-warning"></i><br />Free
+                    </div>
+                  </div>
+                  <a href="detail.html" class="btn btn-acc w-100 mt-auto"
+                    >View menu</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              class="col-sm-6 col-lg-3 item"
+              data-c="italian"
+              data-n="trattoria roma"
+              data-r="4.4"
+              data-t="30"
+              data-p="14"
+            >
+              <div class="card-x d-flex flex-column h-100">
+                <div class="position-relative">
+                  <img src="images/Italian-3.jpg" alt="Trattoria Roma" />
+                  <span
+                    class="badge text-bg-secondary position-absolute top-0 start-0 m-2"
+                    >Closed</span
+                  ><span
+                    class="badge text-bg-warning position-absolute top-0 end-0 m-2"
+                    ><i class="fa fa-star"></i> 4.4</span
+                  >
+                </div>
+                <div class="b d-flex flex-column flex-grow-1">
+                  <div class="d-flex justify-content-between align-items-start">
+                    <h5>Trattoria Roma</h5>
+                    <small class="text-capitalize">italian</small>
+                  </div>
+                  <small>280 reviews</small>
+                  <p class="mb-2">
+                    Family-style Italian comfort food: lasagna, risotto and
+                    generous sharing platters.
+                  </p>
+                  <div class="mb-3">
+                    <span
+                      class="badge rounded-pill text-bg-dark border border-secondary fw-normal me-1"
+                      >Lasagna</span
+                    ><span
+                      class="badge rounded-pill text-bg-dark border border-secondary fw-normal me-1"
+                      >Risotto</span
+                    >
+                  </div>
+                  <div
+                    class="row g-0 text-center small border-top border-secondary-subtle pt-2 mb-3"
+                  >
+                    <div class="col-4">
+                      <i class="fa fa-clock text-warning"></i><br />30–40 min
+                    </div>
+                    <div class="col-4">
+                      <i class="fa fa-bag-shopping text-warning"></i><br />Min
                       $14
-                    </h6>
+                    </div>
+                    <div class="col-4">
+                      <i class="fa fa-motorcycle text-warning"></i><br />$3
+                    </div>
                   </div>
+                  <a href="detail.html" class="btn btn-acc w-100 mt-auto"
+                    >View menu</a
+                  >
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-sm-6 col-lg-4 all chinese">
-            <div class="box">
-              <div>
-                <div class="img-box">
-                  <img src="images/Chinese-3.jpg" alt="">
+            <div
+              class="col-sm-6 col-lg-3 item"
+              data-c="pakistani"
+              data-n="peshawari dera"
+              data-r="4.7"
+              data-t="35"
+              data-p="12"
+            >
+              <div class="card-x d-flex flex-column h-100">
+                <div class="position-relative">
+                  <img src="images/Indian-2.jpg" alt="Peshawari Dera" />
+                  <span
+                    class="badge text-bg-success position-absolute top-0 start-0 m-2"
+                    >Open now</span
+                  ><span
+                    class="badge text-bg-warning position-absolute top-0 end-0 m-2"
+                    ><i class="fa fa-star"></i> 4.7</span
+                  >
                 </div>
-                <div class="detail-box">
-                  <h5>
-                    Chinese Restaurant
-                  </h5>
-                  <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
+                <div class="b d-flex flex-column flex-grow-1">
+                  <div class="d-flex justify-content-between align-items-start">
+                    <h5>Peshawari Dera</h5>
+                    <small class="text-capitalize">pakistani</small>
+                  </div>
+                  <small>520 reviews</small>
+                  <p class="mb-2">
+                    Charcoal-grilled tikka, rich karahi and fresh naan, cooked
+                    the traditional Peshawari way.
                   </p>
-                  <div class="options">
-                    <span>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star"></i>
-                      <i class="fa-solid fa-star-half-stroke"></i>
-                      <i class="fa-regular fa-star"></i>
-                     </span>
-                    <h6>
-                      $10
-                    </h6>
+                  <div class="mb-3">
+                    <span
+                      class="badge rounded-pill text-bg-dark border border-secondary fw-normal me-1"
+                      >Karahi</span
+                    ><span
+                      class="badge rounded-pill text-bg-dark border border-secondary fw-normal me-1"
+                      >Tikka</span
+                    >
                   </div>
+                  <div
+                    class="row g-0 text-center small border-top border-secondary-subtle pt-2 mb-3"
+                  >
+                    <div class="col-4">
+                      <i class="fa fa-clock text-warning"></i><br />35–45 min
+                    </div>
+                    <div class="col-4">
+                      <i class="fa fa-bag-shopping text-warning"></i><br />Min
+                      $12
+                    </div>
+                    <div class="col-4">
+                      <i class="fa fa-motorcycle text-warning"></i><br />Free
+                    </div>
+                  </div>
+                  <a href="detail.html" class="btn btn-acc w-100 mt-auto"
+                    >View menu</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              class="col-sm-6 col-lg-3 item"
+              data-c="pakistani"
+              data-n="karahi house"
+              data-r="4.3"
+              data-t="30"
+              data-p="10"
+            >
+              <div class="card-x d-flex flex-column h-100">
+                <div class="position-relative">
+                  <img src="images/Italian-3.jpg" alt="Karahi House" />
+                  <span
+                    class="badge text-bg-success position-absolute top-0 start-0 m-2"
+                    >Open now</span
+                  ><span
+                    class="badge text-bg-warning position-absolute top-0 end-0 m-2"
+                    ><i class="fa fa-star"></i> 4.3</span
+                  >
+                </div>
+                <div class="b d-flex flex-column flex-grow-1">
+                  <div class="d-flex justify-content-between align-items-start">
+                    <h5>Karahi House</h5>
+                    <small class="text-capitalize">pakistani</small>
+                  </div>
+                  <small>190 reviews</small>
+                  <p class="mb-2">
+                    Traditional BBQ platters, seekh kebabs and slow-cooked
+                    karahi for the whole family.
+                  </p>
+                  <div class="mb-3">
+                    <span
+                      class="badge rounded-pill text-bg-dark border border-secondary fw-normal me-1"
+                      >BBQ</span
+                    ><span
+                      class="badge rounded-pill text-bg-dark border border-secondary fw-normal me-1"
+                      >Kebabs</span
+                    >
+                  </div>
+                  <div
+                    class="row g-0 text-center small border-top border-secondary-subtle pt-2 mb-3"
+                  >
+                    <div class="col-4">
+                      <i class="fa fa-clock text-warning"></i><br />30–40 min
+                    </div>
+                    <div class="col-4">
+                      <i class="fa fa-bag-shopping text-warning"></i><br />Min
+                      $10
+                    </div>
+                    <div class="col-4">
+                      <i class="fa fa-motorcycle text-warning"></i><br />$2
+                    </div>
+                  </div>
+                  <a href="detail.html" class="btn btn-acc w-100 mt-auto"
+                    >View menu</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              class="col-sm-6 col-lg-3 item"
+              data-c="indian"
+              data-n="masala garden"
+              data-r="4.1"
+              data-t="25"
+              data-p="9"
+            >
+              <div class="card-x d-flex flex-column h-100">
+                <div class="position-relative">
+                  <img src="images/Indian-1.jpg" alt="Masala Garden" />
+                  <span
+                    class="badge text-bg-secondary position-absolute top-0 start-0 m-2"
+                    >Closed</span
+                  ><span
+                    class="badge text-bg-warning position-absolute top-0 end-0 m-2"
+                    ><i class="fa fa-star"></i> 4.1</span
+                  >
+                </div>
+                <div class="b d-flex flex-column flex-grow-1">
+                  <div class="d-flex justify-content-between align-items-start">
+                    <h5>Masala Garden</h5>
+                    <small class="text-capitalize">indian</small>
+                  </div>
+                  <small>170 reviews</small>
+                  <p class="mb-2">
+                    Fragrant biryani, crunchy chaat and street snacks inspired
+                    by busy Indian bazaars.
+                  </p>
+                  <div class="mb-3">
+                    <span
+                      class="badge rounded-pill text-bg-dark border border-secondary fw-normal me-1"
+                      >Biryani</span
+                    ><span
+                      class="badge rounded-pill text-bg-dark border border-secondary fw-normal me-1"
+                      >Chaat</span
+                    >
+                  </div>
+                  <div
+                    class="row g-0 text-center small border-top border-secondary-subtle pt-2 mb-3"
+                  >
+                    <div class="col-4">
+                      <i class="fa fa-clock text-warning"></i><br />25–35 min
+                    </div>
+                    <div class="col-4">
+                      <i class="fa fa-bag-shopping text-warning"></i><br />Min
+                      $9
+                    </div>
+                    <div class="col-4">
+                      <i class="fa fa-motorcycle text-warning"></i><br />$1
+                    </div>
+                  </div>
+                  <a href="detail.html" class="btn btn-acc w-100 mt-auto"
+                    >View menu</a
+                  >
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="btn-box">
-        <a href="">
-          View More
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- end food section -->
-
-  <!-- footer section -->
-  <footer class="footer_section">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 footer-col">
-          <div class="footer_contact">
-            <h4>
-              Contact Us
-            </h4>
-            <div class="contact_link_box">
-              <a href="">
-                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                <span>
-                  Location
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-phone" aria-hidden="true"></i>
-                <span>
-                  Call +01 1234567890
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-                <span>
-                  demo@gmail.com
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 footer-col">
-          <div class="footer_detail">
-            <a href="" class="footer-logo">
-              Food Point
-            </a>
-            <p>
-              Necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
+          <div id="empty" class="text-center py-5 d-none">
+            <i class="fa fa-face-frown fa-3x text-secondary mb-3"></i>
+            <h5>No restaurants found</h5>
+            <p class="text-secondary">
+              Try another name or choose a different cuisine.
             </p>
-            <div class="footer_social">
-              <a href="">
-                <i class="fa fa-facebook" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-twitter" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-linkedin" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-instagram" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-pinterest" aria-hidden="true"></i>
-              </a>
-            </div>
+            <button class="btn btn-line" id="reset">Clear filters</button>
           </div>
         </div>
-        <div class="col-md-4 footer-col">
-          <h4>
-            Opening Hours
-          </h4>
-          <p>
-            Everyday
-          </p>
-          <p>
-            10.00 Am -10.00 Pm
-          </p>
+      </section>
+
+      <section class="pb-5">
+        <div class="container">
+          <div
+            class="p-4 p-md-5 rounded-4 border border-secondary-subtle text-center"
+            style="background: #1b1e25"
+          >
+            <h3 class="fw-bold">Can't decide what to eat?</h3>
+            <p class="text-secondary mx-auto" style="max-width: 520px">
+              Open our full menu and add your favourite pizza, burger or pasta
+              straight to your cart.
+            </p>
+            <a href="detail.html" class="btn btn-acc btn-lg px-4"
+              >Browse full menu</a
+            >
+          </div>
         </div>
-      </div>
-    </div>
-  </footer>
-  <!-- footer section -->
-
-  <!-- jQery -->
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <!-- popper js -->
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-  </script>
-  <!-- bootstrap js -->
-  <script src="js/bootstrap.js"></script>
-  <!-- owl slider -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
-  </script>
-  <!-- isotope js -->
-  <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
-  <!-- nice select -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
-  <!-- custom js -->
-  <script src="js/custom.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js" integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-</body>
-
+      </section>
+    </main>
+    <div id="foot"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        let cat = "all";
+        const g = $("#grid"),
+          items = $$(".item");
+        const sorts = {
+          rating: (a, b) => b.dataset.r - a.dataset.r,
+          time: (a, b) => a.dataset.t - b.dataset.t,
+          price: (a, b) => a.dataset.p - b.dataset.p,
+          name: (a, b) => a.dataset.n.localeCompare(b.dataset.n),
+        };
+        function draw() {
+          const q = $("#q").value.trim().toLowerCase();
+          let n = 0;
+          items.sort(sorts[$("#sort").value]).forEach((i) => {
+            g.appendChild(i);
+            const ok =
+              (cat === "all" || i.dataset.c === cat) && i.dataset.n.includes(q);
+            i.style.display = ok ? "" : "none";
+            if (ok) n++;
+          });
+          $("#count").textContent =
+            "Showing " + n + " of " + items.length + " restaurants";
+          $("#empty").classList.toggle("d-none", n > 0);
+        }
+        $$("[data-f]").forEach(
+          (b) =>
+            (b.onclick = () => {
+              cat = b.dataset.f;
+              $$("[data-f]").forEach((x) => x.classList.toggle("on", x === b));
+              draw();
+            }),
+        );
+        $("#q").oninput = draw;
+        $("#sort").onchange = draw;
+        $("#reset").onclick = () => {
+          $("#q").value = "";
+          cat = "all";
+          $$("[data-f]").forEach((x) =>
+            x.classList.toggle("on", x.dataset.f === "all"),
+          );
+          draw();
+        };
+        draw();
+      });
+    </script>
+  </body>
 </html>

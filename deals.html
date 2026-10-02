@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deals - FoodPoint</title><link rel="shortcut icon" href="images/favicon.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<style>
+@keyframes up{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes fl{50%{transform:translateY(-14px)}}@keyframes pulse2{50%{transform:scale(1.25)}}@keyframes shine{60%,100%{left:140%}}@keyframes tick{40%{transform:translateY(-4px);color:#fff}}
+.fade-up{animation:up .8s ease both}.d1{animation-delay:.15s}.d2{animation-delay:.3s}.d3{animation-delay:.45s}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}.rv.show{opacity:1;transform:none}
+.dl{animation:up .6s ease both}
+.hero4{position:relative;overflow:hidden;padding:100px 0 80px;background:#111317}
+.hero4 .blob{position:absolute;right:-8%;top:-25%;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(230,156,0,.3),transparent 65%);animation:pulse2 8s ease-in-out infinite}
+.hero4 .container{position:relative}
+.hero4 h1{font-size:clamp(2.5rem,6vw,4.4rem);font-weight:800;letter-spacing:-1.5px;line-height:1.05}
+.ol{color:transparent;-webkit-text-stroke:2px var(--acc)}
+.cd{display:flex;gap:12px}.cd div{width:78px;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 0}
+.cd b{display:block;font-size:1.7rem;color:var(--acc)}.cd b.t{animation:tick .4s}.cd small{color:var(--mut);font-size:.72rem}
+.mega{position:relative;max-width:460px;margin:auto;text-align:center}
+.mega .ring{position:absolute;inset:6%;border-radius:50%;border:2px dashed rgba(230,156,0,.4);animation:spin 28s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.mega img{position:relative;width:62%;animation:fl 5s ease-in-out infinite;filter:drop-shadow(0 25px 30px rgba(0,0,0,.6))}
+.mega .m2{position:absolute;width:34%;left:2%;bottom:2%;animation-delay:1s}.mega .m3{position:absolute;width:30%;right:0;top:4%;animation-delay:2s}
+.sticker{position:absolute;right:6%;bottom:6%;width:118px;height:118px;border-radius:50%;background:var(--acc);color:#111;display:grid;place-items:center;text-align:center;font-weight:800;line-height:1.1;transform:rotate(12deg);animation:pulse2 3s ease-in-out infinite}
+.sticker small{display:block;font-weight:600;font-size:.7rem}
+.deal{position:relative;background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:transform .35s,border-color .35s,box-shadow .35s}
+.deal:hover{transform:translateY(-10px) rotate(-.6deg);border-color:var(--acc);box-shadow:0 22px 40px rgba(0,0,0,.5)}
+.ribbon{position:absolute;top:16px;left:-34px;z-index:3;width:140px;text-align:center;transform:rotate(-40deg);background:var(--acc);color:#111;font-weight:800;font-size:.75rem;padding:4px 0;overflow:hidden}
+.ribbon:after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.7),transparent);animation:shine 3s infinite}
+.dstage{position:relative;height:200px;display:flex;justify-content:center;align-items:center;background:radial-gradient(circle at 50% 60%,rgba(230,156,0,.22),transparent 65%)}
+.dstage img{width:120px;height:120px;object-fit:contain;margin:0 -14px;filter:drop-shadow(0 14px 14px rgba(0,0,0,.55));transition:transform .5s}
+.n3 img{width:100px;height:100px}
+.deal:hover .dstage img{transform:translateX(calc((var(--i) - .5)*22px)) scale(1.12) rotate(calc((var(--i) - .5)*8deg))}
+.deal .btn-acc{transition:.25s}.deal:hover .btn-acc{transform:scale(1.07)}
+.step{text-align:center}.step .ic{width:74px;height:74px;border-radius:50%;background:rgba(230,156,0,.12);color:var(--acc);display:grid;place-items:center;font-size:1.6rem;margin:0 auto 14px;transition:.3s}
+.step:hover .ic{background:var(--acc);color:#111;transform:rotate(-10deg) scale(1.1)}
+.accordion{--bs-accordion-bg:var(--card);--bs-accordion-color:var(--txt);--bs-accordion-border-color:var(--line);--bs-accordion-btn-bg:var(--card);--bs-accordion-btn-color:var(--txt);--bs-accordion-active-bg:#22262e;--bs-accordion-active-color:var(--acc);--bs-accordion-btn-focus-box-shadow:none}
+.accordion-button::after{filter:invert(1)}
+.cta{background:var(--acc);color:#111;border-radius:22px;padding:46px 40px;position:relative;overflow:hidden}
+.cta:after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:rgba(0,0,0,.08);animation:pulse2 4s ease-in-out infinite}
+.cta .btn{background:#111;color:#fff;font-weight:600}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style></head><body>
+<div id="nav"></div>
+<main id="main">
+<section class="hero4"><div class="blob"></div><div class="container"><div class="row align-items-center g-5">
+ <div class="col-lg-6">
+  <span class="badge text-bg-warning px-3 py-2 mb-3 fade-up"><i class="fa fa-fire me-1"></i> Limited time offers</span>
+  <h1 class="fade-up d1">Big deals,<br><span class="ol">bigger flavour</span></h1>
+  <p class="lead text-secondary my-4 fade-up d2" style="max-width:500px">Save up to 30% on combos made for sharing. Fresh pizza, juicy burgers and pasta at prices that make every meal a treat.</p>
+  <div class="mb-2 small text-secondary fade-up d2">Today's deals end in</div>
+  <div class="cd mb-4 fade-up d3"><div><b id="h">00</b><small>Hours</small></div><div><b id="m">00</b><small>Minutes</small></div><div><b id="s">00</b><small>Seconds</small></div></div>
+  <div class="d-flex flex-wrap gap-3 fade-up d3"><a href="#deals" class="btn btn-acc btn-lg px-4">Grab the deals <i class="fa fa-arrow-down ms-2"></i></a><a href="detail.html" class="btn btn-line btn-lg px-4">Browse menu</a></div>
+ </div>
+ <div class="col-lg-6 fade-up d2"><div class="mega"><div class="ring"></div><img src="images/f1.png" alt="" onerror="this.style.visibility='hidden'"><img class="m2" src="images/f2.png" alt="" onerror="this.style.visibility='hidden'"><img class="m3" src="images/f5.png" alt="" onerror="this.style.visibility='hidden'"><div class="sticker"><div>UP TO<br><span class="fs-3">30%</span><small>OFF</small></div></div></div></div>
+</div></div></section>
+
+<section class="container py-5" id="deals" style="scroll-margin-top:80px">
+ <div class="text-center mb-4 rv"><h2 class="fw-bold">Today's best deals</h2><p class="text-secondary mb-0">Pick a combo and save on every order</p></div>
+ <div class="d-flex flex-wrap justify-content-center mb-4"><button class="chip on" data-f="all">All deals</button><button class="chip" data-f="combo">Combos</button><button class="chip" data-f="pizza">Pizza</button><button class="chip" data-f="burger">Burgers</button><button class="chip" data-f="pasta">Pasta</button></div>
+ <div class="row g-4" id="grid">
+<div class="col-md-6 col-lg-4 dl rv" data-c="combo"><div class="deal h-100 d-flex flex-column"><div class="ribbon">31% OFF</div>
+<div class="dstage n3"><img src="images/f1.png" alt="" style="--i:0" onerror="this.style.visibility='hidden'"><img src="images/f2.png" alt="" style="--i:1" onerror="this.style.visibility='hidden'"><img src="images/f5.png" alt="" style="--i:2" onerror="this.style.visibility='hidden'"></div><div class="p-4 pt-3 d-flex flex-column flex-grow-1"><span class="badge text-bg-dark border border-secondary align-self-start mb-2">Best value</span>
+<h5 class="fw-bold">Family Feast</h5><p class="small text-secondary">2 pizzas, 2 burgers and a big portion of fries. Perfect for 4 people.</p>
+<div class="mt-auto d-flex justify-content-between align-items-center"><div><s class="text-secondary small">$85</s> <span class="price fs-4">$59</span><div class="small text-success">You save $26</div></div>
+<button class="btn btn-acc px-3" data-add="deal0" data-n="Family Feast" data-p="59" data-i="f1.png"><i class="fa fa-cart-plus me-1"></i>Add</button></div></div></div></div>
+<div class="col-md-6 col-lg-4 dl rv" data-c="burger"><div class="deal h-100 d-flex flex-column"><div class="ribbon">24% OFF</div>
+<div class="dstage n2"><img src="images/f7.png" alt="" style="--i:0" onerror="this.style.visibility='hidden'"><img src="images/f5.png" alt="" style="--i:1" onerror="this.style.visibility='hidden'"></div><div class="p-4 pt-3 d-flex flex-column flex-grow-1"><span class="badge text-bg-dark border border-secondary align-self-start mb-2">Popular</span>
+<h5 class="fw-bold">Burger Combo</h5><p class="small text-secondary">Two cheese burgers with crispy fries and a drink. Great for sharing.</p>
+<div class="mt-auto d-flex justify-content-between align-items-center"><div><s class="text-secondary small">$38</s> <span class="price fs-4">$29</span><div class="small text-success">You save $9</div></div>
+<button class="btn btn-acc px-3" data-add="deal1" data-n="Burger Combo" data-p="29" data-i="f7.png"><i class="fa fa-cart-plus me-1"></i>Add</button></div></div></div></div>
+<div class="col-md-6 col-lg-4 dl rv" data-c="pizza"><div class="deal h-100 d-flex flex-column"><div class="ribbon">22% OFF</div>
+<div class="dstage n2"><img src="images/f1.png" alt="" style="--i:0" onerror="this.style.visibility='hidden'"><img src="images/f3.png" alt="" style="--i:1" onerror="this.style.visibility='hidden'"></div><div class="p-4 pt-3 d-flex flex-column flex-grow-1"><span class="badge text-bg-dark border border-secondary align-self-start mb-2">Hot deal</span>
+<h5 class="fw-bold">Pizza Duo</h5><p class="small text-secondary">Margherita and Pepperoni pizza together at one low price.</p>
+<div class="mt-auto d-flex justify-content-between align-items-center"><div><s class="text-secondary small">$37</s> <span class="price fs-4">$29</span><div class="small text-success">You save $8</div></div>
+<button class="btn btn-acc px-3" data-add="deal2" data-n="Pizza Duo" data-p="29" data-i="f1.png"><i class="fa fa-cart-plus me-1"></i>Add</button></div></div></div></div>
+<div class="col-md-6 col-lg-4 dl rv" data-c="pasta"><div class="deal h-100 d-flex flex-column"><div class="ribbon">21% OFF</div>
+<div class="dstage n2"><img src="images/f4.png" alt="" style="--i:0" onerror="this.style.visibility='hidden'"><img src="images/f9.png" alt="" style="--i:1" onerror="this.style.visibility='hidden'"></div><div class="p-4 pt-3 d-flex flex-column flex-grow-1"><span class="badge text-bg-dark border border-secondary align-self-start mb-2">For two</span>
+<h5 class="fw-bold">Pasta Night</h5><p class="small text-secondary">Creamy pasta and tomato pasta for two, served fresh and hot.</p>
+<div class="mt-auto d-flex justify-content-between align-items-center"><div><s class="text-secondary small">$28</s> <span class="price fs-4">$22</span><div class="small text-success">You save $6</div></div>
+<button class="btn btn-acc px-3" data-add="deal3" data-n="Pasta Night" data-p="22" data-i="f4.png"><i class="fa fa-cart-plus me-1"></i>Add</button></div></div></div></div>
+<div class="col-md-6 col-lg-4 dl rv" data-c="combo"><div class="deal h-100 d-flex flex-column"><div class="ribbon">22% OFF</div>
+<div class="dstage n3"><img src="images/f8.png" alt="" style="--i:0" onerror="this.style.visibility='hidden'"><img src="images/f3.png" alt="" style="--i:1" onerror="this.style.visibility='hidden'"><img src="images/f5.png" alt="" style="--i:2" onerror="this.style.visibility='hidden'"></div><div class="p-4 pt-3 d-flex flex-column flex-grow-1"><span class="badge text-bg-dark border border-secondary align-self-start mb-2">Spicy</span>
+<h5 class="fw-bold">Spicy Squad</h5><p class="small text-secondary">Spicy burger, pepperoni pizza and fries for people who like heat.</p>
+<div class="mt-auto d-flex justify-content-between align-items-center"><div><s class="text-secondary small">$41</s> <span class="price fs-4">$32</span><div class="small text-success">You save $9</div></div>
+<button class="btn btn-acc px-3" data-add="deal4" data-n="Spicy Squad" data-p="32" data-i="f8.png"><i class="fa fa-cart-plus me-1"></i>Add</button></div></div></div></div>
+<div class="col-md-6 col-lg-4 dl rv" data-c="burger"><div class="deal h-100 d-flex flex-column"><div class="ribbon">24% OFF</div>
+<div class="dstage n2"><img src="images/f2.png" alt="" style="--i:0" onerror="this.style.visibility='hidden'"><img src="images/f5.png" alt="" style="--i:1" onerror="this.style.visibility='hidden'"></div><div class="p-4 pt-3 d-flex flex-column flex-grow-1"><span class="badge text-bg-dark border border-secondary align-self-start mb-2">Quick bite</span>
+<h5 class="fw-bold">Solo Meal</h5><p class="small text-secondary">Classic burger and fries. A quick, filling meal for one.</p>
+<div class="mt-auto d-flex justify-content-between align-items-center"><div><s class="text-secondary small">$25</s> <span class="price fs-4">$19</span><div class="small text-success">You save $6</div></div>
+<button class="btn btn-acc px-3" data-add="deal5" data-n="Solo Meal" data-p="19" data-i="f2.png"><i class="fa fa-cart-plus me-1"></i>Add</button></div></div></div></div>
+</div>
+</section>
+
+<section class="container pb-5"><div class="text-center mb-5 rv"><h2 class="fw-bold">How to get a deal</h2><p class="text-secondary mb-0">Three easy steps</p></div><div class="row g-4"><div class="col-md-4 rv"><div class="step"><div class="ic"><i class="fa fa-hand-pointer"></i></div><h5 class="fs-6 fw-semibold">1. Pick a deal</h5><p class="small text-secondary mb-0">Choose a combo that fits your hunger and your group size.</p></div></div><div class="col-md-4 rv"><div class="step"><div class="ic"><i class="fa fa-cart-plus"></i></div><h5 class="fs-6 fw-semibold">2. Add to cart</h5><p class="small text-secondary mb-0">The discounted price is already applied. No code needed.</p></div></div><div class="col-md-4 rv"><div class="step"><div class="ic"><i class="fa fa-motorcycle"></i></div><h5 class="fs-6 fw-semibold">3. Get it delivered</h5><p class="small text-secondary mb-0">Confirm your address and enjoy hot food at your door.</p></div></div></div></section>
+
+<section class="container pb-5"><div class="row justify-content-center"><div class="col-lg-8"><div class="text-center mb-4 rv"><h2 class="fw-bold">Good to know</h2></div><div class="accordion rv" id="faq"><div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#f0">Do I need a promo code?</button></h2><div id="f0" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body small text-secondary">No. The deal price is shown on the card and is added to your cart automatically.</div></div></div><div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#f1">How long are the deals available?</button></h2><div id="f1" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body small text-secondary">Deals refresh every day. The timer at the top shows how much time is left today.</div></div></div><div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#f2">Can I change items inside a combo?</button></h2><div id="f2" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body small text-secondary">Combos are fixed so we can keep the price low. You can add extra dishes from the menu to the same order.</div></div></div><div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#f3">Is delivery free?</button></h2><div id="f3" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body small text-secondary">Delivery is free on orders over $30. Smaller orders have a small delivery fee.</div></div></div></div></div></div></section>
+
+<section class="container pb-5"><div class="cta rv"><div class="row align-items-center g-3"><div class="col-lg-8"><h2 class="fw-bold mb-2">Want something different?</h2><p class="mb-0">Browse the full menu and build your own order. Add deals and single dishes to the same cart.</p></div><div class="col-lg-4 text-lg-end"><a href="detail.html" class="btn btn-lg px-4">View full menu</a></div></div></div></section>
+</main>
+<div id="foot"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.12});
+ $$('.rv').forEach(el=>io.observe(el));
+ $$('[data-f]').forEach(b=>b.onclick=()=>{$$('[data-f]').forEach(x=>x.classList.toggle('on',x===b));$$('.dl').forEach(d=>{const ok=b.dataset.f==='all'||d.dataset.c===b.dataset.f;d.style.display=ok?'':'none';d.classList.add('show')})});
+ const p=n=>String(n).padStart(2,'0');let last={};
+ function tick(){const e=new Date();e.setHours(23,59,59,999);let s=Math.max(0,Math.floor((e-new Date())/1000));
+  const v={h:Math.floor(s/3600),m:Math.floor(s%3600/60),s:s%60};
+  for(const k in v){const el=$('#'+k);el.textContent=p(v[k]);if(last[k]!==undefined&&last[k]!==v[k]){el.classList.remove('t');void el.offsetWidth;el.classList.add('t')}last[k]=v[k]}}
+ tick();setInterval(tick,1000)});
+</script></body></html>
